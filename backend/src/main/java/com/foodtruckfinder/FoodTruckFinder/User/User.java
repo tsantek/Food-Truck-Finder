@@ -18,7 +18,6 @@ public class User {
     @Column(name = "user_id")
     private long id;
 
-
     @Column(name = "name")
     private  String name;
 
