@@ -1,6 +1,5 @@
 package com.foodtruckfinder.FoodTruckFinder.User;
 
-
 import com.foodtruckfinder.FoodTruckFinder.FoodTruck.FoodTruck;
 import lombok.Data;
 
@@ -31,9 +30,5 @@ public class User {
 
     @Column(name = "img")
     private  String img;
-
-
-    @ManyToMany(mappedBy = "user")
-    private Set<FoodTruck> favorites = new HashSet<>();
 
 }

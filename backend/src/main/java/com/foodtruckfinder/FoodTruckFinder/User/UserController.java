@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1/users")
@@ -35,5 +36,4 @@ public class UserController {
         userRepository.deleteById(user_id);
         return "User deleted";
     }
-
 }
