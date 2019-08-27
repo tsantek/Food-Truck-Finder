@@ -14,7 +14,7 @@ class GoogleMaps extends Component {
 
       <div style={{ height: "100vh", width: "100%" }}>
         <GoogleMapReact
-          bootstrapURLKeys={{ key: "AIzaSyARrbU8jmIoHZTMkjl4aLcFHLl0Ba7n72Q" }}
+          bootstrapURLKeys={{ key: "" }}
           defaultCenter={{
             lat: this.props.coords.latitude,
             lng: this.props.coords.longitude

@@ -13,13 +13,26 @@ body {
     position: absolute;
     top: 1px;
     z-index: 2;
-    width: 20%;
     background-color: white;
     height: 100%;
+    width: 300px;
 }
 
 .search {
-    width: 80%;
+    width: 265px;
     padding: 10px;
     margin-top: 10px;
+    border-radius: 10px;
+    border-color: red;
+}
+
+.search:focus {
+    outline: red;
+    border-radius: 10px;
+    border-color: rebeccapurple;
+}
+
+.food-truck-list-container {
+    width: 265px;
+    border: 1px solid red;
 }
