@@ -1,5 +1,6 @@
 package com.foodtruckfinder.FoodTruckFinder.User;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -21,6 +22,7 @@ public class User {
     @Column(name = "email")
     private  String email;
 
+    @JsonIgnore
     @Column(name = "password")
     private  String password;
 

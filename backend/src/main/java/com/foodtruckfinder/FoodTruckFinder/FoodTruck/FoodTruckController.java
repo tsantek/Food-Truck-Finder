@@ -2,8 +2,11 @@ package com.foodtruckfinder.FoodTruckFinder.FoodTruck;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @RequestMapping("api/v1/foodtruck")
@@ -24,6 +27,7 @@ public class FoodTruckController {
 
     @PostMapping
     public FoodTruck addNewFoodTruckUser(@RequestBody FoodTruck foodTruck){
+        foodTruck.setPassword(DigestUtils.md5DigestAsHex(foodTruck.getPassword().getBytes()));
         foodTruckRepository.save(foodTruck);
         return foodTruck;
     }
@@ -34,13 +38,13 @@ public class FoodTruckController {
         return "Truck deleted";
     }
 
-
     @PatchMapping("/{id}")
     public FoodTruck update(@PathVariable Long id, @RequestBody FoodTruck userUpdates) {
         FoodTruck user = foodTruckRepository.findById(id).get();
         user.setName(userUpdates.getName());
         user.setEmail(userUpdates.getEmail());
-        user.setPassword(userUpdates.getPassword());
+        if (userUpdates.getPassword() != null)
+            user.setPassword(DigestUtils.md5DigestAsHex(userUpdates.getPassword().getBytes()));
         user.setImg(userUpdates.getImg());
         user.setDescription((userUpdates.getDescription()));
         user.setSubtitle(userUpdates.getSubtitle());
@@ -55,6 +59,15 @@ public class FoodTruckController {
     }
 
 
+    @PostMapping("/authenticate")
+    public Map<String, Object> authenticate(@RequestBody FoodTruck user) {
+        FoodTruck authenticatedUser = foodTruckRepository.findByEmailPassword(user.getEmail(), DigestUtils.md5DigestAsHex(user.getPassword().getBytes()));
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("authenticated", authenticatedUser != null);
+        if (authenticatedUser != null)
+            result.put("user", authenticatedUser);
+        return result;
+    }
 
 
 
