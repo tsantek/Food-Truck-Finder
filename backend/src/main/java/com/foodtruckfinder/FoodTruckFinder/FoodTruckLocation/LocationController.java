@@ -30,4 +30,12 @@ public class LocationController {
             return locationRepository.save(location);
     }
 
+    @DeleteMapping("/delete/{location_id}")
+    public void deleteLocation(@PathVariable Long location_id){
+        locationRepository.deleteById(location_id);
+    }
+
+
+
+
 }

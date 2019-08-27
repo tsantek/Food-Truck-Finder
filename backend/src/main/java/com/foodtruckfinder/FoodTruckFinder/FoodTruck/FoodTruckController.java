@@ -53,7 +53,13 @@ public class FoodTruckController {
     @PatchMapping("/review/{id}/{score}")
     public FoodTruck update(@PathVariable Long id, @PathVariable Double score) {
         FoodTruck user = foodTruckRepository.findById(id).get();
-        user.setReview((user.getReview() + score) / 2);
+        System.out.println(user.getReview());
+        if(user.getReview() == null){
+            user.setReview(score);
+        }else {
+            user.setReview((user.getReview() + score) / 2);
+        }
+
         return foodTruckRepository.save(user);
     }
 

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/users")
@@ -52,8 +53,10 @@ public class UserController {
 
     @PostMapping("/authenticate")
     public Map<String, Object> authenticate(@RequestBody User user) {
+//        get authenticated
         User authenticatedUser = userRepository.findByEmailPassword(user.getEmail(), DigestUtils.md5DigestAsHex(user.getPassword().getBytes()));
         HashMap<String, Object> result = new HashMap<>();
+//        push to result autenticated
         result.put("authenticated", authenticatedUser != null);
         if (authenticatedUser != null)
             result.put("user", authenticatedUser);
