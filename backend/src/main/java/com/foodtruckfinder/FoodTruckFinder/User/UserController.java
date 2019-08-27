@@ -8,7 +8,8 @@ import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
-import java.util.Optional;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1/users")
@@ -28,6 +29,7 @@ public class UserController {
 
     @PostMapping
     public ResponseEntity<?> addUser(@RequestBody User user) {
+        user.setPassword(DigestUtils.md5DigestAsHex(user.getPassword().getBytes()));
         return new ResponseEntity<>(userRepository.save(user), HttpStatus.CREATED);
     }
 
@@ -42,8 +44,19 @@ public class UserController {
         User user = userRepository.findById(id).get();
         user.setName(userUpdates.getName());
         user.setEmail(userUpdates.getEmail());
-        user.setPassword(userUpdates.getPassword());
+        if (userUpdates.getPassword() != null)
+            user.setPassword(DigestUtils.md5DigestAsHex(userUpdates.getPassword().getBytes()));
         user.setImg(userUpdates.getImg());
         return userRepository.save(user);
+    }
+
+    @PostMapping("/authenticate")
+    public Map<String, Object> authenticate(@RequestBody User user) {
+        User authenticatedUser = userRepository.findByEmailPassword(user.getEmail(), DigestUtils.md5DigestAsHex(user.getPassword().getBytes()));
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("authenticated", authenticatedUser != null);
+        if (authenticatedUser != null)
+            result.put("user", authenticatedUser);
+        return result;
     }
 }

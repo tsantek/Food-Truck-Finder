@@ -1,8 +1,4 @@
 package com.foodtruckfinder.FoodTruckFinder.FoodTruckLocation;
-
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.foodtruckfinder.FoodTruckFinder.FoodTruck.FoodTruck;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 

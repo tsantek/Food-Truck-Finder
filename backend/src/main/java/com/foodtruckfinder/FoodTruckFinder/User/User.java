@@ -1,11 +1,8 @@
 package com.foodtruckfinder.FoodTruckFinder.User;
 
-import com.foodtruckfinder.FoodTruckFinder.FoodTruck.FoodTruck;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 
 @Entity
