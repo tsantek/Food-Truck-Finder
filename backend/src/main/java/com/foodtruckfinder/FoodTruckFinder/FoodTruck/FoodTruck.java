@@ -1,14 +1,8 @@
 package com.foodtruckfinder.FoodTruckFinder.FoodTruck;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.foodtruckfinder.FoodTruckFinder.User.User;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-
 
 @Entity
 @Data
@@ -26,6 +20,7 @@ public class FoodTruck {
     @Column(name = "email")
     private  String email;
 
+    @JsonIgnore
     @Column(name = "password")
     private  String password;
 

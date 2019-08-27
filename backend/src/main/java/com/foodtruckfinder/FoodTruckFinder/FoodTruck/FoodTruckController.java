@@ -15,7 +15,6 @@ public class FoodTruckController {
     @Autowired
     public  final FoodTruckRepository foodTruckRepository;
 
-
     public FoodTruckController(FoodTruckRepository foodTruckRepository) {
         this.foodTruckRepository = foodTruckRepository;
     }
@@ -58,7 +57,6 @@ public class FoodTruckController {
         return foodTruckRepository.save(user);
     }
 
-
     @PostMapping("/authenticate")
     public Map<String, Object> authenticate(@RequestBody FoodTruck user) {
         FoodTruck authenticatedUser = foodTruckRepository.findByEmailPassword(user.getEmail(), DigestUtils.md5DigestAsHex(user.getPassword().getBytes()));
@@ -68,7 +66,4 @@ public class FoodTruckController {
             result.put("user", authenticatedUser);
         return result;
     }
-
-
-
 }

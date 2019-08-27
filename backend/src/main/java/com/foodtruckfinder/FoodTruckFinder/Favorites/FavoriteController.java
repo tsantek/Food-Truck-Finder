@@ -12,7 +12,6 @@ public class FavoriteController {
         @Autowired
         private  final FavoriteRespository favoriteRespository;
 
-
         public FavoriteController(FavoriteRespository favoriteRespository) {
             this.favoriteRespository = favoriteRespository;
         }
@@ -21,7 +20,6 @@ public class FavoriteController {
         public Iterable<Favorite> list(){
             return favoriteRespository.findAll();
         }
-
 
         @PostMapping
         public Favorite addNewFoodTruckUser(@RequestBody Favorite favorite){
