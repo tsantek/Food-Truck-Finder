@@ -5,8 +5,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.foodtruckfinder.FoodTruckFinder.FoodTruck.FoodTruck;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -30,6 +28,9 @@ public class Location {
     @Column(name = "location")
     private  String location;
 
+    @Column(name = "location_date")
+    private  String location_date;
+
     @Column(name = "location_time_start")
     private  String location_time_start;
 
@@ -38,7 +39,6 @@ public class Location {
 
     @Column(name = "truck_id")
     private  Long truck_id;
-
 
     @CreationTimestamp
     private Date time;

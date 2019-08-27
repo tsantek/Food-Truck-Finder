@@ -35,6 +35,27 @@ public class FoodTruckController {
     }
 
 
+    @PatchMapping("/{id}")
+    public FoodTruck update(@PathVariable Long id, @RequestBody FoodTruck userUpdates) {
+        FoodTruck user = foodTruckRepository.findById(id).get();
+        user.setName(userUpdates.getName());
+        user.setEmail(userUpdates.getEmail());
+        user.setPassword(userUpdates.getPassword());
+        user.setImg(userUpdates.getImg());
+        user.setDescription((userUpdates.getDescription()));
+        user.setSubtitle(userUpdates.getSubtitle());
+        return foodTruckRepository.save(user);
+    }
+
+    @PatchMapping("/review/{id}/{score}")
+    public FoodTruck update(@PathVariable Long id, @PathVariable Double score) {
+        FoodTruck user = foodTruckRepository.findById(id).get();
+        user.setReview((user.getReview() + score) / 2);
+        return foodTruckRepository.save(user);
+    }
+
+
+
 
 
 }

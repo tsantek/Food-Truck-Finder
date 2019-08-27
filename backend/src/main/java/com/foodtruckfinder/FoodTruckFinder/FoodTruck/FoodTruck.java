@@ -29,11 +29,14 @@ public class FoodTruck {
     @Column(name = "password")
     private  String password;
 
+    @Column(name = "subtitle")
+    private  String subtitle;
+
     @Column(name = "description")
     private  String description;
 
     @Column(name = "review")
-    private  Long review;
+    private  Double review;
 
     @Column(name = "img")
     private  String img;

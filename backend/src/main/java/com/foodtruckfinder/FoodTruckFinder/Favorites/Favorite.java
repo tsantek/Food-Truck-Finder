@@ -14,7 +14,6 @@ public class Favorite {
     @Column(name = "favorite_id")
     private long favorite_id;
 
-
     @Column(name = "user_id")
     private long user_id;
 

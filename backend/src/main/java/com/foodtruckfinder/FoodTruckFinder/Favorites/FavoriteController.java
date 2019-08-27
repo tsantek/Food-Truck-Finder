@@ -23,10 +23,10 @@ public class FavoriteController {
         }
 
 
-    @PostMapping
-    public Favorite addNewFoodTruckUser(@RequestBody Favorite favorite){
-        return favoriteRespository.save(favorite);
-    }
+        @PostMapping
+        public Favorite addNewFoodTruckUser(@RequestBody Favorite favorite){
+            return favoriteRespository.save(favorite);
+        }
 
         @DeleteMapping("/delete/{favorite_id}")
         public String deleteUser(@PathVariable Long favorite_id){
