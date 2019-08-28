@@ -34,8 +34,4 @@ public class LocationController {
     public void deleteLocation(@PathVariable Long location_id){
         locationRepository.deleteById(location_id);
     }
-
-
-
-
 }
