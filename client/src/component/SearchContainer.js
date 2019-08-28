@@ -1,11 +1,11 @@
 import React from "react";
-import Search from "./search/Search";
 import FoodTruckList from "./foodtrucklist/FoodTruckList";
+import HeaderSearchComponent from "./header/HeaderSearchComponent";
 
 const SearchContainer = () => {
   return (
     <div className="search-container">
-      <Search />
+      <HeaderSearchComponent />
       <FoodTruckList />
     </div>
   );

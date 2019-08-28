@@ -1,3 +1,11 @@
+/*
+color blue #2 #203556
+color blue #1 #62ABD2
+color blue #3 #67B5DA
+color gray container back #FAFAFA
+
+*/
+
 .App {
     height: 90vh;
     width: 100%;
@@ -6,10 +14,11 @@
 .search-container {
     position: absolute;
     top: 1px;
+    right: 0px;
     z-index: 2;
-    background-color: white;
+    background-color: #FAFAFA;
     height: 100%;
-    width: 300px;
+    width: 320px;
 }
 
 .search {
