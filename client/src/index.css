@@ -49,12 +49,6 @@ body {
     padding: 0px 20px 20px 20px;
 }
 
-.search:focus {
-    /* outline: red; */
-    /* border-radius: 10px;
-    border-color: rebeccapurple; */
-}
-
 .menu-container {
     display: flex;
     justify-content: space-between;
@@ -222,4 +216,53 @@ body {
     padding-top: 10px;
     text-align: center;
     font-size: 15px;
+}
+
+
+/* LOGIN */
+
+.login-container {
+    background-image: linear-gradient(to right, #62ABD2, #203556);
+    height: 100vh;
+}
+
+.login-card {
+    width: 60%;
+}
+
+.col-login-cart {
+    padding-top: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.login-page-title {
+    float: right;
+}
+
+.login-quote {
+    width: 100%;
+    text-align: center;
+    padding-top: 10%;
+}
+
+.buttons-reg-log {
+    padding-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.sub-title-login {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.login-btn {
+    margin-right: 10px;
+}
+
+.register-btn {
+    margin-left: 10px;
 }

@@ -1,33 +1,21 @@
-import React, { useEffect } from "react";
+import React from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+
 import "./App.css";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
-
-import api from "./api/api";
-import SearchContainer from "./component/SearchContainer";
-import GoogleMaps from "./component/maps/GoogleMaps";
-import { Row, Col } from "reactstrap";
-import Logo from "./component/logo/Logo";
+import UserView from "./component/UserView";
+import Login from "./component/Login";
 
 function App() {
-  useEffect(() => {
-    api.get("/users").then(response => console.log(response));
-  }, []);
-
   return (
     <Provider store={store}>
-      <div className="App">
-        <Logo />
-        <Row style={{ height: "100vh" }}>
-          <Col md="9" className="remove-padding-margin">
-            <GoogleMaps />
-          </Col>
-          <Col md="3" className="remove-padding-margin">
-            <SearchContainer />
-          </Col>
-        </Row>
-      </div>
-      ]
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/" component={Login} />
+          <Route path="/userview" component={UserView} />
+        </Switch>
+      </BrowserRouter>
     </Provider>
   );
 }

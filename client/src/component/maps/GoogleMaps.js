@@ -26,6 +26,9 @@ class GoogleMaps extends Component {
           <Marker lat={33.438572} lng={-112.048075} text="My Marker" />
           <Marker lat={33.428572} lng={-112.048075} text="My Marker" />
           <Marker lat={33.418572} lng={-112.048075} text="My Marker" />
+          <Marker lat={33.438572} lng={-112.068075} text="My Marker" />
+          <Marker lat={33.428572} lng={-112.058075} text="My Marker" />
+          <Marker lat={33.418572} lng={-112.078075} text="My Marker" />
         </GoogleMapReact>
       </div>
     ) : (
