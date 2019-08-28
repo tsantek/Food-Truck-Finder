@@ -7,6 +7,7 @@ import api from "./api/api";
 import SearchContainer from "./component/SearchContainer";
 import GoogleMaps from "./component/maps/GoogleMaps";
 import { Row, Col } from "reactstrap";
+import Logo from "./component/logo/Logo";
 
 function App() {
   useEffect(() => {
@@ -16,6 +17,7 @@ function App() {
   return (
     <Provider store={store}>
       <div className="App">
+        <Logo />
         <Row style={{ height: "100vh" }}>
           <Col md="9" className="remove-padding-margin">
             <GoogleMaps />
