@@ -1,13 +1,7 @@
 import React from "react";
 
 const Menu = () => {
-  return (
-    <div>
-      <ul>
-        <li>TEst</li>
-      </ul>
-    </div>
-  );
+  return <div>asdasd</div>;
 };
 
 export default Menu;

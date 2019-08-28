@@ -12,7 +12,7 @@ class GoogleMaps extends Component {
     ) : this.props.coords ? (
       // when I have geolocation
 
-      <div style={{ height: "98vh", width: "100%" }}>
+      <div style={{ height: "100%", width: "100%" }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: process.env.REACT_APP_SECRET_CODE }}
           defaultCenter={{
@@ -21,7 +21,6 @@ class GoogleMaps extends Component {
           }}
           defaultZoom={13}
           defaultOptions={{ fullscreenControl: false }}
-          margin={[0, 0, 0, 0]}
           onClick={e => console.log(e)}
         >
           <Marker lat={33.438572} lng={-112.048075} text="My Marker" />

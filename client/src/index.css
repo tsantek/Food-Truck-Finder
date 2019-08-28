@@ -6,23 +6,34 @@ color gray container back #FAFAFA
 
 */
 
+
+/* REMOVE ALL PADDING AND MARGIN */
+
+.remove-padding-margin {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+body {
+    overflow: hidden;
+}
+
 .App {
-    height: 90vh;
+    height: 98vh;
     width: 100%;
 }
 
 .search-container {
-    position: absolute;
-    top: 1px;
-    right: 0px;
-    z-index: 2;
     background-color: #FAFAFA;
     height: 100%;
-    width: 320px;
+}
+
+.header-search-component {
+    background-image: linear-gradient(to right, red, yellow);
 }
 
 .search {
-    width: 265px;
+    /* width: 265px; */
     padding: 10px;
     margin-top: 10px;
     border-radius: 10px;

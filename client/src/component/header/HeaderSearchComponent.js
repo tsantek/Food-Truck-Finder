@@ -4,10 +4,10 @@ import Menu from "../menu/Menu";
 
 const HeaderSearchComponent = () => {
   return (
-    <>
+    <div className="header-search-component">
       <Menu />
       <Search />
-    </>
+    </div>
   );
 };
 
