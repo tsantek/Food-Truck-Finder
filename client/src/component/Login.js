@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { checkUserInfo } from "../api/api";
+import { checkUserInfo, userRegister } from "../api/api";
 import { getUserInfo } from "../redux/actions";
 import { withRouter } from "react-router-dom";
 import {
@@ -37,6 +37,27 @@ const Login = props => {
         } else {
           console.log("Sorry wrong password!");
         }
+      })
+      .catch(error => console.error(error));
+  };
+
+  const onSubmitRegister = e => {
+    e.preventDefault();
+    let password = e.target.password.value;
+    let email = e.target.email.value;
+    let name = e.target.name.value;
+    let img = e.target.img.value;
+
+    userRegister("http://localhost:8080/api/v1/users", {
+      password,
+      email,
+      img,
+      name
+    })
+      .then(data => {
+        console.log(data);
+        dispatch(getUserInfo(data));
+        history.push("/userview");
       })
       .catch(error => console.error(error));
   };
@@ -98,40 +119,43 @@ const Login = props => {
               </Form>
             ) : (
               // REGISTER
-              <form className="form-register">
+              <form
+                onSubmit={e => onSubmitRegister(e)}
+                className="form-register"
+              >
                 <FormGroup>
-                  <Label for="exampleEmail">Email</Label>
+                  <Label for="email">Email</Label>
                   <Input
                     type="email"
                     name="email"
-                    id="exampleEmail"
+                    id="email"
                     placeholder="Email"
                   />
                 </FormGroup>
                 <FormGroup>
-                  <Label for="examplePassword">Password</Label>
+                  <Label for="password">Password</Label>
                   <Input
                     type="password"
                     name="password"
-                    id="examplePassword"
+                    id="password"
                     placeholder="Password"
                   />
                 </FormGroup>
                 <FormGroup>
-                  <Label for="exampleEmail">Username</Label>
+                  <Label for="name">Username</Label>
                   <Input
                     type="text"
-                    name="username"
-                    id="exampleEmail"
+                    name="name"
+                    id="name"
                     placeholder="Username"
                   />
                 </FormGroup>
                 <FormGroup>
-                  <Label for="exampleEmail">Profile Image Link</Label>
+                  <Label for="img">Profile Image Link</Label>
                   <Input
                     type="text"
-                    name="img-profile"
-                    id="exampleEmail"
+                    name="img"
+                    id="img"
                     placeholder="Link for profile image"
                   />
                 </FormGroup>
