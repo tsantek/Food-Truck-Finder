@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { checkUserInfo } from "../api/api";
+import { getUserInfo } from "../redux/actions";
+import { withRouter } from "react-router-dom";
 import {
   Button,
   Form,
@@ -12,18 +16,36 @@ import {
 import Logo from "./logo/Logo";
 import { Link } from "react-router-dom";
 
-const Login = () => {
+const Login = props => {
   const [state, setState] = useState(false);
+  const dispatch = useDispatch();
+  const { location, history } = props;
 
   const onSubmitLogin = e => {
     e.preventDefault();
-    console.log(e.target.email.value);
+    let password = e.target.password.value;
+    let email = e.target.email.value;
+
+    checkUserInfo("http://localhost:8080/api/v1/users/authenticate", {
+      password,
+      email
+    })
+      .then(data => {
+        if (data.authenticated) {
+          dispatch(getUserInfo(data.user));
+          history.push("/userview");
+        } else {
+          console.log("Sorry wrong password!");
+        }
+      })
+      .catch(error => console.error(error));
   };
 
   return (
     <div className="login-container">
       <Logo />
       <a className="title-name-header login-title">Food Truck Finder </a>
+      {location.pathname}
       <div className="login-page-truck-login-btn">
         <Link to="/trucklogin" className="truck-login-btn">
           Food Truck Login
@@ -76,7 +98,7 @@ const Login = () => {
               </Form>
             ) : (
               // REGISTER
-              <form onSubmit={e => onSubmitLogin(e)} className="form-register">
+              <form className="form-register">
                 <FormGroup>
                   <Label for="exampleEmail">Email</Label>
                   <Input
@@ -123,4 +145,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default withRouter(Login);

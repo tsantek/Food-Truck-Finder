@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Form, FormGroup } from "reactstrap";
+import { Button, Form } from "reactstrap";
 
 const SearchContainer = () => {
   return (
@@ -23,11 +23,11 @@ const SearchContainer = () => {
         <Form>
           <p>Add new stop</p>
           <span className="form-add-new-stop-label">From</span>
-          <input type="time" />
+          <input className="input-add-new-stop" name="timeFrom" type="time" />
 
           <span className="form-add-new-stop-label">To</span>
 
-          <input type="time" />
+          <input className="input-add-new-stop" name="timeTo" type="time" />
           <div className="submit-btn-form-add-new-stop">
             <p style={{ marginTop: "5px" }}> Select location on the map...</p>
             <Button type="submit">Submit</Button>

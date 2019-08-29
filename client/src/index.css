@@ -409,3 +409,8 @@ body {
     justify-content: space-between;
     align-items: center;
 }
+
+.input-add-new-stop {
+    border-radius: 5px;
+    background-color: #FAFAFA;
+}

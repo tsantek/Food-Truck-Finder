@@ -1,5 +1,6 @@
 import React from "react";
 import ReactStars from "react-stars";
+import { useSelector, useDispatch } from "react-redux";
 
 const FoodTruckList = () => {
   return (

@@ -1,5 +1,22 @@
-import axios from "axios";
+export function checkUserInfo(url = "", data = {}) {
+  return fetch(url, {
+    method: "POST",
+    mode: "cors",
+    credentials: "same-origin",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  }).then(response => response.json());
+}
 
-export default axios.create({
-  baseURL: "http://localhost:8080/api/v1"
-});
+export function getAllFoodTrucks(url = "") {
+  return fetch(url, {
+    method: "GET",
+    mode: "cors",
+    credentials: "same-origin",
+    headers: {
+      "Content-Type": "application/json"
+    }
+  }).then(response => response.json());
+}

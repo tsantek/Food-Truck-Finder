@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import SearchContainer from "./SearchContainer";
 import GoogleMaps from "./maps/GoogleMaps";
 import { Row, Col } from "reactstrap";
 import Logo from "./logo/Logo";
+import { getAllFoodTrucks } from "../api/api";
 
 const UserView = () => {
+  useEffect(() => {
+    getAllFoodTrucks("http://localhost:8080/api/v1/foodtruck").then(res =>
+      console.log(res)
+    );
+  }, []);
+
   return (
     <div className="App">
       <Logo />
