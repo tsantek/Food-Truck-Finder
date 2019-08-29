@@ -12,7 +12,7 @@ import {
 import Logo from "./logo/Logo";
 import { Link } from "react-router-dom";
 
-const Login = () => {
+const TruckLogin = () => {
   const [state, setState] = useState(false);
 
   const onSubmitLogin = e => {
@@ -25,23 +25,16 @@ const Login = () => {
       <Logo />
       <a className="title-name-header login-title">Food Truck Finder </a>
       <div className="login-page-truck-login-btn">
-        <Link to="/trucklogin" className="truck-login-btn">
-          Food Truck Login
+        <Link to="/" className="truck-login-btn">
+          Hungry?
         </Link>
       </div>
       <Container>
         <Row>
           <h3 className="login-quote">
-            Nobody wants to kiss when they are hungry!
+            Let your customers know where you at!!
           </h3>
-          <p className="sub-title-login">
-            Hunger - The worst possible torture someone could go through.
-          </p>
-        </Row>
-        <Row>
-          <div className="buttons-reg-log">
-            <div>Kiss? Food? Find the closest food truck!</div>
-          </div>
+          <p className="sub-title-login">Chefs for Passion</p>
         </Row>
         <Row>
           <div className="buttons-reg-log">
@@ -105,6 +98,23 @@ const Login = () => {
                   />
                 </FormGroup>
                 <FormGroup>
+                  <Label for="exampleEmail">
+                    What kind of food are you serving?
+                  </Label>
+                  <Input
+                    type="text"
+                    name="img-profile"
+                    id="exampleEmail"
+                    placeholder="Food type"
+                  />
+                </FormGroup>
+                <FormGroup>
+                  <Label for="exampleText">
+                    Tell us something about yourslf..
+                  </Label>
+                  <Input type="textarea" name="text" id="exampleText" />
+                </FormGroup>{" "}
+                <FormGroup>
                   <Label for="exampleEmail">Profile Image Link</Label>
                   <Input
                     type="text"
@@ -123,4 +133,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default TruckLogin;

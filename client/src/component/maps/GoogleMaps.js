@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import GoogleMapReact from "google-map-react";
 import { geolocated } from "react-geolocated";
 import Marker from "./Marker";
+import MyLocation from "./MyLocation";
 
 class GoogleMaps extends Component {
   render() {
@@ -23,6 +24,11 @@ class GoogleMaps extends Component {
           defaultOptions={{ fullscreenControl: false }}
           onClick={e => console.log(e)}
         >
+          <MyLocation
+            lat={this.props.coords.latitude}
+            lng={this.props.coords.longitude}
+            text="My Marker"
+          />
           <Marker lat={33.438572} lng={-112.048075} text="My Marker" />
           <Marker lat={33.428572} lng={-112.048075} text="My Marker" />
           <Marker lat={33.418572} lng={-112.048075} text="My Marker" />

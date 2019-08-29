@@ -17,7 +17,7 @@ color gray container back #FAFAFA
 }
 
 body {
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .App {
@@ -223,7 +223,8 @@ body {
 
 .login-container {
     background-image: linear-gradient(to right, #62ABD2, #203556);
-    height: 100vh;
+    min-height: 100vh;
+    color: white !important;
 }
 
 .login-card {
@@ -236,8 +237,14 @@ body {
     justify-content: center;
 }
 
-.login-page-title {
-    float: right;
+.login-page-truck-login-btn {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.truck-login-btn {
+    padding: 10px;
+    color: white !important;
 }
 
 .login-quote {
@@ -265,4 +272,23 @@ body {
 
 .register-btn {
     margin-left: 10px;
+}
+
+.accout-toggle-btn {
+    cursor: pointer;
+}
+
+.form-register {
+    padding-bottom: 10px;
+}
+
+.login-title {
+    display: flex;
+    font-size: 40px;
+    justify-content: center;
+    margin-bottom: -95px;
+}
+
+.form-register {
+    padding-bottom: 40px;
 }
