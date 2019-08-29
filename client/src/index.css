@@ -35,6 +35,7 @@ body {
     margin-left: -5px;
     margin-right: 15px;
     border-radius: 10px 0 0 0;
+    overflow: scroll;
 }
 
 .header-search-component {
@@ -63,7 +64,7 @@ body {
 /* Logo */
 
 .logo {
-    position: absolute;
+    position: fixed;
     margin: 10px;
     top: 0;
     left: 0;
@@ -97,7 +98,7 @@ body {
 }
 
 .card {
-    height: 100%;
+    /* height: 100%; */
     margin: 10px;
 }
 
@@ -363,4 +364,48 @@ body {
     to {
         transform: rotate(360deg);
     }
+}
+
+
+/* TRUCK PROFILE */
+
+.truck-info-container {
+    background-image: linear-gradient(to right, #62ABD2, #203556) !important;
+    min-height: 100%;
+    border-radius: 10px 0 0 0;
+    margin-left: -5px;
+}
+
+.truck-menu {
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.truck-menu li {
+    cursor: pointer;
+    color: white;
+    padding-top: 10px;
+    list-style: none;
+}
+
+.stop-delete-button {
+    display: grid;
+    justify-content: flex-end;
+}
+
+.add-time-form-truck {
+    display: grid;
+    justify-content: space-between;
+}
+
+.form-add-new-stop-label {
+    padding: 5px;
+}
+
+.submit-btn-form-add-new-stop {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

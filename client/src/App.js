@@ -7,6 +7,7 @@ import { store } from "./redux/store";
 import UserView from "./component/UserView";
 import Login from "./component/Login";
 import TruckLogin from "./component/TruckLogin";
+import TruckView from "./component/TruckView";
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Login} />
           <Route path="/userview" component={UserView} />
-
+          <Route path="/trackview" component={TruckView} />
           <Route path="/trucklogin" component={TruckLogin} />
         </Switch>
       </BrowserRouter>

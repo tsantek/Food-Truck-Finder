@@ -1,30 +1,31 @@
 import React from "react";
-import SearchContainer from "./SearchContainer";
-import GoogleMaps from "./maps/GoogleMaps";
+import GoogleMapsTrack from "./maps/GoogleMapsTrack";
 import { Row, Col } from "reactstrap";
 import Logo from "./logo/Logo";
+import TruckSettings from "./foodtrucklocator/TruckSettings";
 
 const UserView = () => {
   return (
     <div className="App">
       <Logo />
-      <Row style={{ height: "100vh" }}>
+      <Row style={{ height: "100vh" }} className="remove-padding-margin ">
         <Col
           md="9"
           className="remove-padding-margin"
           style={{
             backgroundColor: "#EFEFEB",
-            height: "100vh"
+            height: "100vh",
+            position: "fixed"
           }}
         >
-          <GoogleMaps />
+          <GoogleMapsTrack />
         </Col>
         <Col
           md="3"
           className="remove-padding-margin"
-          style={{ height: "100vh" }}
+          style={{ position: "absolute", right: "0", height: "100%" }}
         >
-          <SearchContainer />
+          <TruckSettings />
         </Col>
       </Row>
     </div>
