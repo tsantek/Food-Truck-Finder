@@ -3,13 +3,14 @@ import GoogleMapReact from "google-map-react";
 import { geolocated } from "react-geolocated";
 import Marker from "./Marker";
 import MyLocation from "./MyLocation";
+import MapLoader from "./MapLoader";
 
 class GoogleMaps extends Component {
   render() {
     return !this.props.isGeolocationAvailable ? (
       <div>Your browser does not support Geolocation</div>
     ) : !this.props.isGeolocationEnabled ? (
-      <div>Geolocation is not enabled</div>
+      <MapLoader />
     ) : this.props.coords ? (
       // when I have geolocation
 
@@ -38,7 +39,7 @@ class GoogleMaps extends Component {
         </GoogleMapReact>
       </div>
     ) : (
-      <div>Getting the location data&hellip; </div>
+      <MapLoader />
     );
   }
 }

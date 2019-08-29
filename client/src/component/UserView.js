@@ -9,7 +9,11 @@ const UserView = () => {
     <div className="App">
       <Logo />
       <Row style={{ height: "100vh" }}>
-        <Col md="9" className="remove-padding-margin">
+        <Col
+          md="9"
+          className="remove-padding-margin"
+          style={{ backgroundColor: "#EFEFEB" }}
+        >
           <GoogleMaps />
         </Col>
         <Col md="3" className="remove-padding-margin">

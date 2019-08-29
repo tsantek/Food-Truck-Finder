@@ -4,8 +4,8 @@ const MyLocation = ({ text }) => {
   return (
     <div
       style={{
-        height: "10px",
-        width: "10px",
+        height: "15px",
+        width: "15px",
         backgroundColor: "blue",
         borderRadius: "100%"
       }}
