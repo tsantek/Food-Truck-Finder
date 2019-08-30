@@ -31,9 +31,10 @@ const TruckLogin = props => {
       email
     })
       .then(data => {
+        console.log(data);
         if (data.authenticated) {
           dispatch(getUserInfo(data.user));
-          history.push("/truckview");
+          history.push("/trackview");
         } else {
           console.log("Sorry wrong password!");
         }
@@ -47,12 +48,16 @@ const TruckLogin = props => {
     let email = e.target.email.value;
     let name = e.target.name.value;
     let img = e.target.img.value;
+    let description = e.target.description.value;
+    let subtitle = e.target.subtitle.value;
 
     userRegister("http://localhost:8080/api/v1/foodtruck", {
       password,
       email,
       img,
-      name
+      name,
+      description,
+      subtitle
     })
       .then(data => {
         dispatch(getUserInfo(data));

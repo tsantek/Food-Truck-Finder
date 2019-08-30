@@ -19,7 +19,7 @@ import { Link } from "react-router-dom";
 const Login = props => {
   const [state, setState] = useState(false);
   const dispatch = useDispatch();
-  const { location, history } = props;
+  const { history } = props;
 
   const onSubmitLogin = e => {
     e.preventDefault();
@@ -66,7 +66,6 @@ const Login = props => {
     <div className="login-container">
       <Logo />
       <a className="title-name-header login-title">Food Truck Finder </a>
-      {location.pathname}
       <div className="login-page-truck-login-btn">
         <Link to="/trucklogin" className="truck-login-btn">
           Food Truck Login
