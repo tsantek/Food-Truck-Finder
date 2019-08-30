@@ -65,7 +65,7 @@ const Login = props => {
   return (
     <div className="login-container">
       <Logo />
-      <a className="title-name-header login-title">Food Truck Finder </a>
+      <div className="title-name-header login-title">Food Truck Finder </div>
       <div className="login-page-truck-login-btn">
         <Link to="/trucklogin" className="truck-login-btn">
           Food Truck Login
