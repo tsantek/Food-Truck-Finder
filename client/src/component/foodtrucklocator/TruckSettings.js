@@ -1,9 +1,11 @@
 import React from "react";
 import { Button, Form } from "reactstrap";
 import { useSelector } from "react-redux";
+import { withRouter } from "react-router-dom";
 
-const SearchContainer = () => {
+const SearchContainer = props => {
   const user = useSelector(state => state.payload);
+  const { history } = props;
   return (
     <div className="truck-info-container">
       <div className="menu-container">
@@ -18,7 +20,7 @@ const SearchContainer = () => {
         </div>
       </div>
       <ul className="truck-menu">
-        <li>Logout</li>
+        <li onClick={() => history.push("/")}>Logout</li>
       </ul>
 
       <div className="card" style={{ padding: "5px" }}>
@@ -51,4 +53,4 @@ const SearchContainer = () => {
   );
 };
 
-export default SearchContainer;
+export default withRouter(SearchContainer);
