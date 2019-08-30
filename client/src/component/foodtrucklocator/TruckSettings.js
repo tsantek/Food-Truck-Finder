@@ -1,7 +1,9 @@
 import React from "react";
 import { Button, Form } from "reactstrap";
+import { useSelector } from "react-redux";
 
 const SearchContainer = () => {
+  const user = useSelector(state => state.payload);
   return (
     <div className="truck-info-container">
       <div className="menu-container">
@@ -10,7 +12,7 @@ const SearchContainer = () => {
           <img
             alt="logo"
             className="unknown-user"
-            src="./img/user.png"
+            src={user ? user.img : "./img/user.png"}
             height="100px"
           />
         </div>
