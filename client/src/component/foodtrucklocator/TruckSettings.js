@@ -32,9 +32,11 @@ const SearchContainer = props => {
     let timeSplited = time.split(":");
     let fullTime;
 
-    if (timeSplited[0] >= 12) {
+    if (timeSplited[0] > 12) {
       fullTime =
         (timeSplited[0] - 12).toString() + ":" + timeSplited[1] + " PM";
+    } else if (timeSplited[0] === 24) {
+      fullTime = time + " PM";
     } else {
       fullTime = time + " AM";
     }
