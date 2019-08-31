@@ -28,7 +28,18 @@ const SearchContainer = props => {
     });
   };
 
-  console.log(stops);
+  const convertTime = time => {
+    let timeSplited = time.split(":");
+    let fullTime;
+
+    if (timeSplited[0] >= 12) {
+      fullTime =
+        (timeSplited[0] - 12).toString() + ":" + timeSplited[1] + " PM";
+    } else {
+      fullTime = time + " AM";
+    }
+    return fullTime;
+  };
 
   return (
     <div className="truck-info-container">
@@ -80,7 +91,9 @@ const SearchContainer = props => {
           <div className="card">
             <div className="card-text" style={{ padding: "10px" }}>
               <p className="truck-time-today">
-                {stop.location_time_start} {stop.location_time_end}
+                From {convertTime(stop.location_time_start)}
+                <span> </span>
+                To {convertTime(stop.location_time_end)}
               </p>
               <div className="stop-delete-button">
                 <Button color="link" onClick={() => deleteLocation(stop.id)}>

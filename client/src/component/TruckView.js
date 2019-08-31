@@ -47,7 +47,6 @@ const UserView = props => {
   };
 
   const deleteStop = id => {
-    console.log(id);
     deleteLocation(`http://localhost:8080/api/v1/location/delete/${id}`)
       .then(res => {
         let newStops = stops.filter(stop => stop.id !== id);
