@@ -3,7 +3,7 @@ import GoogleMapsTrack from "./maps/GoogleMapsTrack";
 import { Row, Col } from "reactstrap";
 import Logo from "./logo/Logo";
 import TruckSettings from "./foodtrucklocator/TruckSettings";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getUserInfo } from "../redux/actions";
 import { setLocation, getAllLocations, deleteLocation } from "../api/api";
 import { withRouter } from "react-router-dom";
@@ -13,6 +13,7 @@ const UserView = props => {
   const dispatch = useDispatch();
   const [position, setPositionState] = useState([]);
   const [stops, setStops] = useState([]);
+  const user = useSelector(state => state.payload);
 
   useEffect(() => {
     if (!localStorage.getItem("user")) {
@@ -68,7 +69,12 @@ const UserView = props => {
             position: "fixed"
           }}
         >
-          <GoogleMapsTrack setPosition={setPosition} stops={stops} />
+          <GoogleMapsTrack
+            setPosition={setPosition}
+            stops={stops}
+            position={position}
+            user={user}
+          />
         </Col>
         <Col
           md="3"
