@@ -11,7 +11,7 @@ import { withRouter } from "react-router-dom";
 const UserView = props => {
   const { history } = props;
   const dispatch = useDispatch();
-  const [position, setPositionState] = useState([]);
+  const [position, setPositionState] = useState(null);
   const [stops, setStops] = useState([]);
   const user = useSelector(state => state.payload);
 
@@ -24,7 +24,7 @@ const UserView = props => {
         .then(res => setStops(res))
         .catch(error => console.error(console.error()));
     }
-  }, []);
+  }, [dispatch, history]);
 
   const setPosition = e => {
     setPositionState({ lat: e.lat, lng: e.lng });

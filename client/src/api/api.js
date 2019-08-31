@@ -1,5 +1,3 @@
-import { futimes } from "fs";
-
 export function checkUserInfo(url = "", data = {}) {
   return fetch(url, {
     method: "POST",

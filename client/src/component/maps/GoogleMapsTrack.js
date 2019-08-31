@@ -4,17 +4,18 @@ import { geolocated } from "react-geolocated";
 import MyLocation from "./MyLocation";
 import MapLoader from "./MapLoader";
 import TruckMarker from "./TruckMarker";
+import SelectMarker from "./SelectMarker";
 
 class GoogleMaps extends Component {
   render() {
-    const { setPosition, stops, position, user } = this.props;
+    const { setPosition, stops, user, position } = this.props;
 
     let date = new Date();
     let day = date.getDate();
     let month = date.getMonth();
     let year = date.getFullYear();
     let fullDate = day.toString() + month.toString() + year.toString();
-    console.log(stops);
+    console.log(position);
     return !this.props.isGeolocationAvailable ? (
       <div>Your browser does not support Geolocation</div>
     ) : !this.props.isGeolocationEnabled ? (
@@ -35,15 +36,19 @@ class GoogleMaps extends Component {
             lat={this.props.coords.latitude}
             lng={this.props.coords.longitude}
           />
-
+          {/* MAP MARKERS */}
           {stops
             .filter(
               stop =>
                 stop.truck_id === user.id && stop.location_date === fullDate
             )
             .map(stop => (
-              <TruckMarker lat={stop.lat} lng={stop.lng} />
+              <TruckMarker lat={stop.lat} lng={stop.lng} key={stop.id} />
             ))}
+
+          {position !== null && (
+            <SelectMarker lat={position.lat} lng={position.lng} />
+          )}
         </GoogleMapReact>
       </div>
     ) : (

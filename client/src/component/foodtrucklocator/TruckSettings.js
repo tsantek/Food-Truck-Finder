@@ -90,7 +90,7 @@ const SearchContainer = props => {
           stop => stop.truck_id === user.id && stop.location_date === fullDate
         )
         .map(stop => (
-          <div className="card">
+          <div className="card" key={stop.id}>
             <div className="card-text" style={{ padding: "10px" }}>
               <p className="truck-time-today">
                 From {convertTime(stop.location_time_start)}

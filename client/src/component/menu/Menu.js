@@ -1,6 +1,5 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Button } from "reactstrap";
 
 const Menu = () => {
   const user = useSelector(state => state.payload);
