@@ -6,13 +6,13 @@ import MapLoader from "./MapLoader";
 
 class GoogleMaps extends Component {
   render() {
+    const { setPosition } = this.props;
+
     return !this.props.isGeolocationAvailable ? (
       <div>Your browser does not support Geolocation</div>
     ) : !this.props.isGeolocationEnabled ? (
       <MapLoader />
     ) : this.props.coords ? (
-      // when I have geolocation
-
       <div style={{ height: "100%", width: "100%" }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: process.env.REACT_APP_SECRET_CODE }}
@@ -22,7 +22,7 @@ class GoogleMaps extends Component {
           }}
           defaultZoom={13}
           defaultOptions={{ fullscreenControl: false }}
-          onClick={e => console.log(e)}
+          onClick={e => setPosition(e)}
         >
           <MyLocation
             lat={this.props.coords.latitude}

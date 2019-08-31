@@ -5,7 +5,31 @@ import { withRouter } from "react-router-dom";
 
 const SearchContainer = props => {
   const user = useSelector(state => state.payload);
-  const { history } = props;
+  const { history, setLocation, stops, deleteLocation } = props;
+
+  let date = new Date();
+  let day = date.getDate();
+  let month = date.getMonth();
+  let year = date.getFullYear();
+  let fullDate = day.toString() + month.toString() + year.toString();
+
+  const logout = () => {
+    history.push("/trucklogin");
+    localStorage.clear();
+  };
+
+  const setLocationTime = e => {
+    e.preventDefault();
+    setLocation({
+      location_date: fullDate,
+      location_time_start: e.target.timeFrom.value,
+      location_time_end: e.target.timeTo.value,
+      truck_id: user.id
+    });
+  };
+
+  console.log(stops);
+
   return (
     <div className="truck-info-container">
       <div className="menu-container">
@@ -20,35 +44,52 @@ const SearchContainer = props => {
         </div>
       </div>
       <ul className="truck-menu">
-        <li onClick={() => history.push("/")}>Logout</li>
+        <li onClick={() => logout()}>Logout</li>
       </ul>
 
       <div className="card" style={{ padding: "5px" }}>
-        <Form>
+        <Form onSubmit={e => setLocationTime(e)}>
           <p>Add new stop</p>
           <span className="form-add-new-stop-label">From</span>
-          <input className="input-add-new-stop" name="timeFrom" type="time" />
+          <input
+            required
+            className="input-add-new-stop"
+            name="timeFrom"
+            type="time"
+          />
 
           <span className="form-add-new-stop-label">To</span>
 
-          <input className="input-add-new-stop" name="timeTo" type="time" />
+          <input
+            required
+            className="input-add-new-stop"
+            name="timeTo"
+            type="time"
+          />
           <div className="submit-btn-form-add-new-stop">
             <p style={{ marginTop: "5px" }}> Select location on the map...</p>
             <Button type="submit">Submit</Button>
           </div>
         </Form>
       </div>
-
-      {/* CARD */}
-      <div className="card">
-        <div className="card-text" style={{ padding: "10px" }}>
-          <p className="truck-time-today">From 10:00am to 2:00pm</p>
-          <div className="stop-delete-button">
-            <Button color="link">Delete</Button>
+      {stops
+        .filter(
+          stop => stop.truck_id === user.id && stop.location_date === fullDate
+        )
+        .map(stop => (
+          <div className="card">
+            <div className="card-text" style={{ padding: "10px" }}>
+              <p className="truck-time-today">
+                {stop.location_time_start} {stop.location_time_end}
+              </p>
+              <div className="stop-delete-button">
+                <Button color="link" onClick={() => deleteLocation(stop.id)}>
+                  Delete
+                </Button>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-      {/* CARD END */}
+        ))}
     </div>
   );
 };

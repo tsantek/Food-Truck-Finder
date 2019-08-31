@@ -34,7 +34,10 @@ const TruckLogin = props => {
         console.log(data);
         if (data.authenticated) {
           dispatch(getUserInfo(data.user));
-          history.push("/trackview");
+          history.push(
+            "/trackview",
+            localStorage.setItem("user", JSON.stringify(data.user))
+          );
         } else {
           console.log("Sorry wrong password!");
         }

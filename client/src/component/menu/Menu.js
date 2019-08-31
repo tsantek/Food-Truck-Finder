@@ -4,7 +4,6 @@ import { Button } from "reactstrap";
 
 const Menu = () => {
   const user = useSelector(state => state.payload);
-  console.log(user);
   return (
     <div className="menu-container">
       <a className="title-name-header">Food Truck Finder </a>
