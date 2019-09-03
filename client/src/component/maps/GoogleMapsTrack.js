@@ -15,7 +15,7 @@ class GoogleMaps extends Component {
     let month = date.getMonth();
     let year = date.getFullYear();
     let fullDate = day.toString() + month.toString() + year.toString();
-    console.log(position);
+
     return !this.props.isGeolocationAvailable ? (
       <div>Your browser does not support Geolocation</div>
     ) : !this.props.isGeolocationEnabled ? (

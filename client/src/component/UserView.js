@@ -1,23 +1,42 @@
 import React, { useEffect, useState } from "react";
+import { withRouter } from "react-router-dom";
 import SearchContainer from "./SearchContainer";
 import GoogleMaps from "./maps/GoogleMaps";
 import { Row, Col } from "reactstrap";
 import Logo from "./logo/Logo";
-import { getAllFoodTrucks } from "../api/api";
+import { getAllFoodTrucks, getAllLocations, setLocation } from "../api/api";
 
-const UserView = () => {
+const UserView = props => {
   const [trucks, setTrucks] = useState([]);
+  const [locations, setLocations] = useState([]);
+  const { history } = props;
+
+  let date = new Date();
+  let day = date.getDate();
+  let month = date.getMonth();
+  let year = date.getFullYear();
+  let fullDate = day.toString() + month.toString() + year.toString();
 
   useEffect(() => {
+    if (!localStorage.getItem("client")) {
+      history.push("/trucklogin");
+    }
+
     getAllFoodTrucks("http://localhost:8080/api/v1/foodtruck").then(res =>
-      setTrucks(
-        ...res.map(item => {
+      setTrucks({
+        ...res.map(truck => {
           return {
-            ...item,
-            focused: false
+            ...truck,
+            focus: false
           };
         })
-      )
+      })
+    );
+
+    getAllLocations("http://localhost:8080/api/v1/location").then(res =>
+      setLocations({
+        ...res.filter(stop => stop.location_date === fullDate)
+      })
     );
   }, []);
 
@@ -33,18 +52,18 @@ const UserView = () => {
             height: "100vh"
           }}
         >
-          <GoogleMaps trucks={trucks} />
+          <GoogleMaps trucks={trucks} locations={locations} />
         </Col>
         <Col
           md="3"
           className="remove-padding-margin"
           style={{ height: "100vh" }}
         >
-          <SearchContainer />
+          {/* <SearchContainer /> */}
         </Col>
       </Row>
     </div>
   );
 };
 
-export default UserView;
+export default withRouter(UserView);

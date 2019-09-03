@@ -2,11 +2,11 @@ import React from "react";
 import FoodTruckList from "./foodtrucklist/FoodTruckList";
 import HeaderSearchComponent from "./header/HeaderSearchComponent";
 
-const SearchContainer = () => {
+const SearchContainer = props => {
   return (
     <div className="search-container">
       <HeaderSearchComponent />
-      <FoodTruckList />
+      <FoodTruckList trucks={props.trucks} />
     </div>
   );
 };
