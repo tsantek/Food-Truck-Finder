@@ -1,34 +1,51 @@
 import React from "react";
-import ReactStars from "react-stars";
+import FoodTruckCard from "./FoodTruckCard";
 
-const FoodTruckList = ({ trucks, locations }) => {
-  console.log(trucks, locations);
+const FoodTruckList = ({ trucks, locations, setLocations }) => {
+  const mouseIn = locationId => {
+    setLocations(
+      locations.map(location => {
+        if (location.id === locationId) {
+          return {
+            ...location,
+            focus: true
+          };
+        } else {
+          return location;
+        }
+      })
+    );
+  };
+
+  const mouseOut = locationId => {
+    setLocations(
+      locations.map(location => {
+        if (location.id === locationId) {
+          return {
+            ...location,
+            focus: false
+          };
+        } else {
+          return location;
+        }
+      })
+    );
+  };
+
   return (
     <div className="food-truck-list-container">
-      {trucks.map(truck => (
-        <div className="card" key={truck.id}>
-          <div className="img-card">
-            <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTObsbvRGTJUXbhzLkABpz25DUm9L37LV05xAsUpeT8hI4I49Lj"
-              alt="test"
-              className="img-truck-list"
-            />
-            <div className="card-text">
-              <div className="title-start">
-                <div className="truck-title-card">{truck.name}</div>
-                <ReactStars
-                  count={5}
-                  size={14}
-                  color2={"#ffd700"}
-                  value={truck.review}
-                  className="stars"
-                  edit={false}
-                />
-              </div>
-              {/* <p className="truck-sutitle-card">{truck.subtitle}</p> */}
-              <p className="truck-time-today">From 10:00am to 2:00pm</p>
-            </div>
-          </div>
+      {locations.map(location => (
+        <div
+          className="card"
+          key={location.id}
+          // onMouseEnter={() => mouseIn(location.id)}
+        >
+          <FoodTruckCard
+            truck={trucks.find(truck => truck.id === location.truck_id)}
+            location={location}
+            mouseIn={mouseIn}
+            mouseOut={mouseOut}
+          />
         </div>
       ))}
     </div>

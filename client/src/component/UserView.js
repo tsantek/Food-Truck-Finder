@@ -4,7 +4,7 @@ import SearchContainer from "./SearchContainer";
 import GoogleMaps from "./maps/GoogleMaps";
 import { Row, Col } from "reactstrap";
 import Logo from "./logo/Logo";
-import { getAllFoodTrucks, getAllLocations, setLocation } from "../api/api";
+import { getAllFoodTrucks, getAllLocations } from "../api/api";
 
 const UserView = props => {
   const [trucks, setTrucks] = useState([]);
@@ -26,15 +26,23 @@ const UserView = props => {
       setTrucks([
         ...res.map(truck => {
           return {
-            ...truck,
-            focus: false
+            ...truck
           };
         })
       ])
     );
 
     getAllLocations("http://localhost:8080/api/v1/location").then(res =>
-      setLocations([...res.filter(stop => stop.location_date === fullDate)])
+      setLocations([
+        ...res
+          .filter(stop => stop.location_date === fullDate)
+          .map(location => {
+            return {
+              ...location,
+              focus: false
+            };
+          })
+      ])
     );
   }, [fullDate, history]);
 
@@ -57,7 +65,11 @@ const UserView = props => {
           className="remove-padding-margin"
           style={{ height: "100vh" }}
         >
-          <SearchContainer trucks={trucks} locations={locations} />
+          <SearchContainer
+            trucks={trucks}
+            locations={locations}
+            setLocations={setLocations}
+          />
         </Col>
       </Row>
     </div>

@@ -4,13 +4,15 @@ const Marker = ({ truck, location }) => {
   const [state, setState] = useState(false);
   return (
     <div
-      className={state ? "pin pin-hover" : "pin"}
+      className={state || location.focus ? "pin pin-hover" : "pin"}
       onMouseEnter={() => setState(true)}
       onMouseLeave={() => setState(false)}
     >
       <div
         className={
-          state ? "img-mask-marker img-mask-marker-hover " : "img-mask-marker"
+          state || location.focus
+            ? "img-mask-marker img-mask-marker-hover "
+            : "img-mask-marker"
         }
       ></div>
       <img
@@ -19,7 +21,11 @@ const Marker = ({ truck, location }) => {
         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTObsbvRGTJUXbhzLkABpz25DUm9L37LV05xAsUpeT8hI4I49Lj"
       />
       <div
-        className={state ? "about-marker about-marker-hover" : "about-marker"}
+        className={
+          state || location.focus
+            ? "about-marker about-marker-hover"
+            : "about-marker"
+        }
       >
         <div className="name-marker">
           {truck ? truck.name : "Sorry..refresh the page"}
