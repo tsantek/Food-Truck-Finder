@@ -34,6 +34,7 @@ const Login = props => {
         if (data.authenticated) {
           dispatch(getUserInfo(data.user));
           history.push("/userview");
+          localStorage.setItem("client", JSON.stringify(data.user));
         } else {
           console.log("Sorry wrong password!");
         }
@@ -58,6 +59,7 @@ const Login = props => {
         console.log(data);
         dispatch(getUserInfo(data));
         history.push("/userview");
+        localStorage.setItem("client", JSON.stringify(data.user));
       })
       .catch(error => console.error(error));
   };
