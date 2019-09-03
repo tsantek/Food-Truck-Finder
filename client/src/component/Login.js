@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { checkUserInfo, userRegister } from "../api/api";
 import { getUserInfo } from "../redux/actions";
+import { checkUserInfo, userRegister } from "../api/api";
 import { withRouter } from "react-router-dom";
 import {
   Button,
@@ -56,7 +56,6 @@ const Login = props => {
       name
     })
       .then(data => {
-        console.log(data);
         dispatch(getUserInfo(data));
         history.push("/userview");
         localStorage.setItem("client", JSON.stringify(data.user));

@@ -40,7 +40,7 @@ const FoodTruckCard = ({ truck, location, mouseIn, mouseOut }) => {
               color2={"#ffd700"}
               value={truck ? truck.review : 0}
               className="stars"
-              // edit={false}
+              edit={false}
             />
           </div>
           <p className="truck-sutitle-card">
