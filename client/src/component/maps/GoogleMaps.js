@@ -23,7 +23,6 @@ class GoogleMaps extends Component {
           }}
           defaultZoom={13}
           defaultOptions={{ fullscreenControl: false }}
-          onClick={e => console.log(e)}
         >
           <MyLocation
             lat={this.props.coords.latitude}
@@ -32,11 +31,13 @@ class GoogleMaps extends Component {
           />
           {locations.map(location => (
             <Marker
+              style={{ zIndex: 2 }}
               key={location.id}
               lat={location.lat}
               lng={location.lng}
               truck={trucks.find(truck => truck.id === location.truck_id)}
               location={location}
+              zIndex={10}
             />
           ))}
         </GoogleMapReact>

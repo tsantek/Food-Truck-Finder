@@ -156,6 +156,7 @@ body {
     border-radius: 0 50% 50% 50%;
     overflow: hidden;
     background-color: #67B5DA;
+    z-index: 0;
 }
 
 .pin-img {
@@ -169,6 +170,7 @@ body {
 .pin-hover {
     width: 200px;
     height: 200px;
+    z-index: 1001;
 }
 
 .about-marker {
@@ -182,7 +184,7 @@ body {
     opacity: 0;
     transition: 0.5s;
     visibility: hidden;
-    z-index: 2;
+    /* z-index: 2; */
 }
 
 .img-mask-marker {

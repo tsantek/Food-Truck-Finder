@@ -20,7 +20,7 @@ const FoodTruckCard = ({ truck, location, mouseIn, mouseOut }) => {
 
   return (
     <div
-      onMouseEnter={() => mouseIn(location.id)}
+      onClick={() => mouseIn(location.id)}
       onMouseOut={() => mouseOut(location.id)}
     >
       <div className="img-card">
