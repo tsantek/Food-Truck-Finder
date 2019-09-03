@@ -23,22 +23,20 @@ const UserView = props => {
     }
 
     getAllFoodTrucks("http://localhost:8080/api/v1/foodtruck").then(res =>
-      setTrucks({
+      setTrucks([
         ...res.map(truck => {
           return {
             ...truck,
             focus: false
           };
         })
-      })
+      ])
     );
 
     getAllLocations("http://localhost:8080/api/v1/location").then(res =>
-      setLocations({
-        ...res.filter(stop => stop.location_date === fullDate)
-      })
+      setLocations([...res.filter(stop => stop.location_date === fullDate)])
     );
-  }, []);
+  }, [fullDate, history]);
 
   return (
     <div className="App">
@@ -59,7 +57,7 @@ const UserView = props => {
           className="remove-padding-margin"
           style={{ height: "100vh" }}
         >
-          {/* <SearchContainer /> */}
+          <SearchContainer trucks={trucks} locations={locations} />
         </Col>
       </Row>
     </div>

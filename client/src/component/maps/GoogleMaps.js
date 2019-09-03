@@ -9,15 +9,11 @@ class GoogleMaps extends Component {
   render() {
     const { locations, trucks } = this.props;
 
-    console.log(trucks);
-
     return !this.props.isGeolocationAvailable ? (
       <div>Your browser does not support Geolocation</div>
     ) : !this.props.isGeolocationEnabled ? (
       <MapLoader />
     ) : this.props.coords ? (
-      // when I have geolocation
-
       <div style={{ height: "100%", width: "100%" }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: process.env.REACT_APP_SECRET_CODE }}
@@ -34,7 +30,15 @@ class GoogleMaps extends Component {
             lng={this.props.coords.longitude}
             text="My Marker"
           />
-          {/* <Marker lat={33.438572} lng={-112.048075} text="My Marker" />\ */}
+          {locations.map(location => (
+            <Marker
+              key={location.id}
+              lat={location.lat}
+              lng={location.lng}
+              truck={trucks.find(truck => truck.id === location.truck_id)}
+              location={location}
+            />
+          ))}
         </GoogleMapReact>
       </div>
     ) : (

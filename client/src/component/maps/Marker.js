@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 
-const Marker = ({ text }) => {
+const Marker = ({ truck, location }) => {
   const [state, setState] = useState(false);
-  console.log(state);
   return (
     <div
       className={state ? "pin pin-hover" : "pin"}
@@ -22,9 +21,15 @@ const Marker = ({ text }) => {
       <div
         className={state ? "about-marker about-marker-hover" : "about-marker"}
       >
-        <div className="name-marker">DOG TRUCK</div>
-        <div className="subtitle-marker">Mexican Food</div>
-        <div className="working-hours-marker">10:00am to 2:00 pm</div>
+        <div className="name-marker">
+          {truck ? truck.name : "Sorry..refresh the page"}
+        </div>
+        <div className="subtitle-marker">
+          {truck ? truck.subtitle : "Sorry..refresh the page"}
+        </div>
+        <div className="working-hours-marker">
+          {location.location_time_start} to {location.location_time_end}
+        </div>
       </div>
     </div>
   );
