@@ -49,7 +49,7 @@ const UserView = props => {
         ])
       );
     }
-  }, [fullDate, history]);
+  }, [dispatch, fullDate, history]);
 
   return (
     <div className="App">

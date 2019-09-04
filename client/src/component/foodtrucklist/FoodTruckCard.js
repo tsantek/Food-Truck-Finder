@@ -24,11 +24,7 @@ const FoodTruckCard = ({ truck, location, mouseIn, mouseOut }) => {
       onMouseOut={() => mouseOut(location.id)}
     >
       <div className="img-card">
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTObsbvRGTJUXbhzLkABpz25DUm9L37LV05xAsUpeT8hI4I49Lj"
-          alt="test"
-          className="img-truck-list"
-        />
+        <img src={truck && truck.img} alt="test" className="img-truck-list" />
         <div className="card-text">
           <div className="title-start">
             <div className="truck-title-card">

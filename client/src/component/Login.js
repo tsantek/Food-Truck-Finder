@@ -57,8 +57,8 @@ const Login = props => {
     })
       .then(data => {
         dispatch(getUserInfo(data));
+        localStorage.setItem("client", JSON.stringify(data));
         history.push("/userview");
-        localStorage.setItem("client", JSON.stringify(data.user));
       })
       .catch(error => console.error(error));
   };

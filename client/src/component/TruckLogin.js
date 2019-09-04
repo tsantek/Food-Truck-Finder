@@ -65,6 +65,7 @@ const TruckLogin = props => {
       .then(data => {
         dispatch(getUserInfo(data));
         history.push("/trackview");
+        localStorage.setItem("user", JSON.stringify(data.user));
       })
       .catch(error => console.error(error));
   };

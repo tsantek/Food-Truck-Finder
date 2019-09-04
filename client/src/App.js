@@ -9,6 +9,8 @@ import Login from "./component/Login";
 import TruckLogin from "./component/TruckLogin";
 import TruckView from "./component/TruckView";
 import { createBrowserHistory } from "history";
+import Client from "./component/profiles/Client";
+import Truck from "./component/profiles/Truck";
 
 function App() {
   const browserHistory = createBrowserHistory();
@@ -20,6 +22,8 @@ function App() {
           <Route path="/userview" component={UserView} />
           <Route path="/trackview" component={TruckView} />
           <Route path="/trucklogin" component={TruckLogin} />
+          <Route path="/profile" component={Client} />
+          <Route path="/truckprofile" component={Truck} />
         </Switch>
       </Router>
     </Provider>
