@@ -31,7 +31,6 @@ const TruckLogin = props => {
       email
     })
       .then(data => {
-        console.log(data);
         if (data.authenticated) {
           dispatch(getUserInfo(data.user));
           history.push(

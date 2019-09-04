@@ -418,3 +418,13 @@ body {
     border-radius: 5px;
     background-color: #FAFAFA;
 }
+
+
+/* PROFILES */
+
+.update-text-profile {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    padding-top: 20px;
+}

@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Form } from "reactstrap";
 import { useSelector } from "react-redux";
 import { withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const SearchContainer = props => {
   const user = useSelector(state => state.payload);
@@ -47,14 +48,18 @@ const SearchContainer = props => {
     <div className="truck-info-container">
       <div className="menu-container">
         <div className="title-name-header">Food Truck Finder </div>
-        <div className="button-login" style={{ marginRight: "10px" }}>
+        <Link
+          to="/truckprofile"
+          className="button-login"
+          style={{ marginRight: "10px" }}
+        >
           <img
             alt="logo"
             className="unknown-user"
             src={user ? user.img : "./img/user.png"}
             height="100px"
           />
-        </div>
+        </Link>
       </div>
       <ul className="truck-menu">
         <li onClick={() => logout()}>Logout</li>
