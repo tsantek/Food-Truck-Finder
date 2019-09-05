@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { withRouter } from "react-router-dom";
 
@@ -15,28 +15,42 @@ import Logo from "../logo/Logo";
 
 const Client = props => {
   const user = useSelector(state => state.payload);
-  const { history, setLocation, stops, deleteLocation } = props;
+  const { history } = props;
+  const [form, setForm] = useState();
+  useEffect(() => {
+    setForm(user);
+  }, []);
 
-  console.log(user);
+  const handleInputChange = e => {
+    const { name, value } = e.target;
+    setForm({ ...form, [name]: value });
+  };
+
+  const onSubmitForm = e => {
+    e.preventDefault();
+
+    console.log(form);
+  };
 
   return (
     <div className="login-container">
       <Logo />
       <Container>
         <Row>
-          <h4 className="update-text-profile">Update your Truck Profile</h4>
+          <h4 className="update-text-profile">Update your Profile</h4>
         </Row>
         <Row>
           <Col sm="12" md={{ size: 6, offset: 3 }}>
-            <form>
+            <form onSubmit={e => onSubmitForm(e)}>
               <FormGroup>
                 <Label for="email">Email</Label>
                 <Input
                   type="email"
-                  value={user.email}
+                  value={form && form.email}
                   name="email"
                   id="email"
                   placeholder="Email"
+                  onChange={handleInputChange}
                 />
               </FormGroup>
               <FormGroup>
@@ -46,6 +60,8 @@ const Client = props => {
                   name="password"
                   id="password"
                   placeholder="Password"
+                  value={form && form.password}
+                  onChange={handleInputChange}
                 />
               </FormGroup>
               <FormGroup>
@@ -55,28 +71,8 @@ const Client = props => {
                   name="name"
                   id="name"
                   placeholder="Username"
-                  value={user.name}
-                />
-              </FormGroup>
-              <FormGroup>
-                <Label for="subtitle">What kind of food are you serving?</Label>
-                <Input
-                  type="text"
-                  name="subtitle"
-                  id="subtitle"
-                  placeholder="Food type"
-                  value={user.subtitle}
-                />
-              </FormGroup>
-              <FormGroup>
-                <Label for="description">
-                  Tell us something about yourslf..
-                </Label>
-                <Input
-                  type="textarea"
-                  name="description"
-                  id="description"
-                  value={user.description}
+                  value={form && form.name}
+                  onChange={handleInputChange}
                 />
               </FormGroup>
               <FormGroup>
@@ -86,12 +82,13 @@ const Client = props => {
                   name="img"
                   id="img"
                   placeholder="Link for profile image"
-                  value={user.img}
+                  value={form && form.img}
+                  onChange={handleInputChange}
                 />
               </FormGroup>
               <Button>Update</Button>
+              <Button onClick={() => history.push("/userview")}>Back</Button>
             </form>
-            <Button onClick={() => history.push("/trackview")}>Back</Button>
           </Col>
         </Row>
       </Container>
