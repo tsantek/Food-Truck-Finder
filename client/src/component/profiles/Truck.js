@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { updateTruckProfile } from "../../api/api";
 
@@ -18,6 +18,7 @@ const Truck = props => {
   const user = useSelector(state => state.payload);
   const { history } = props;
   const [form, setForm] = useState();
+  // const dispatch = useDispatch();
 
   useEffect(() => {
     setForm(user);
@@ -31,11 +32,13 @@ const Truck = props => {
   const onSubmitForm = e => {
     e.preventDefault();
     updateTruckProfile(
-      `http://localhost:8282//api/v1/foodtruck/${user.id}`,
+      `http://localhost:8080//api/v1/foodtruck/${user.id}`,
       form
-    ).then(res => console.log(res));
-
-    console.log(form);
+    ).then(res => {
+      // dispatch(getUserInfo(res));
+      history.push("/trackview");
+      localStorage.setItem("user", JSON.stringify(res));
+    });
   };
 
   return (
