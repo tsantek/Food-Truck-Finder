@@ -15,7 +15,7 @@ const Marker = ({ truck, location }) => {
             : "img-mask-marker"
         }
       ></div>
-      <img alt="img" className="pin-img" src={truck.img} />
+      <img alt="img" className="pin-img" src={truck && truck.img} />
       <div
         className={
           state || location.focus

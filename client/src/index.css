@@ -428,3 +428,7 @@ body {
     padding: 10px;
     padding-top: 20px;
 }
+
+.italian-font-temporary-value {
+    font-style: italic;
+}

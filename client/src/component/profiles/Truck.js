@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { withRouter } from "react-router-dom";
+import { updateTruckProfile } from "../../api/api";
 
 import {
   Button,
@@ -15,9 +16,27 @@ import Logo from "../logo/Logo";
 
 const Truck = props => {
   const user = useSelector(state => state.payload);
-  const { history, setLocation, stops, deleteLocation } = props;
+  const { history } = props;
+  const [form, setForm] = useState();
 
-  console.log(user);
+  useEffect(() => {
+    setForm(user);
+  }, []);
+
+  const handleInputChange = e => {
+    const { name, value } = e.target;
+    setForm({ ...form, [name]: value });
+  };
+
+  const onSubmitForm = e => {
+    e.preventDefault();
+    updateTruckProfile(
+      `http://localhost:8282//api/v1/foodtruck/${user.id}`,
+      form
+    ).then(res => console.log(res));
+
+    console.log(form);
+  };
 
   return (
     <div className="login-container">
@@ -28,15 +47,16 @@ const Truck = props => {
         </Row>
         <Row>
           <Col sm="12" md={{ size: 6, offset: 3 }}>
-            <form>
+            <form onSubmit={e => onSubmitForm(e)}>
               <FormGroup>
                 <Label for="email">Email</Label>
                 <Input
                   type="email"
-                  value={user.email}
+                  value={form && form.email}
                   name="email"
                   id="email"
                   placeholder="Email"
+                  onChange={handleInputChange}
                 />
               </FormGroup>
               <FormGroup>
@@ -46,6 +66,8 @@ const Truck = props => {
                   name="password"
                   id="password"
                   placeholder="Password"
+                  value={form && form.password}
+                  onChange={handleInputChange}
                 />
               </FormGroup>
               <FormGroup>
@@ -55,7 +77,8 @@ const Truck = props => {
                   name="name"
                   id="name"
                   placeholder="Username"
-                  value={user.name}
+                  value={form && form.name}
+                  onChange={handleInputChange}
                 />
               </FormGroup>
               <FormGroup>
@@ -65,7 +88,8 @@ const Truck = props => {
                   name="subtitle"
                   id="subtitle"
                   placeholder="Food type"
-                  value={user.subtitle}
+                  value={form && form.subtitle}
+                  onChange={handleInputChange}
                 />
               </FormGroup>
               <FormGroup>
@@ -76,7 +100,8 @@ const Truck = props => {
                   type="textarea"
                   name="description"
                   id="description"
-                  value={user.description}
+                  value={form && form.description}
+                  onChange={handleInputChange}
                 />
               </FormGroup>
               <FormGroup>
@@ -86,7 +111,8 @@ const Truck = props => {
                   name="img"
                   id="img"
                   placeholder="Link for profile image"
-                  value={user.img}
+                  value={form && form.img}
+                  onChange={handleInputChange}
                 />
               </FormGroup>
               <Button>Update</Button>
