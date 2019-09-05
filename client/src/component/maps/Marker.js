@@ -2,6 +2,22 @@ import React, { useState } from "react";
 
 const Marker = ({ truck, location }) => {
   const [state, setState] = useState(false);
+
+  const convertTime = time => {
+    let timeSplited = time.split(":");
+    let fullTime;
+
+    if (timeSplited[0] > 12) {
+      fullTime =
+        (timeSplited[0] - 12).toString() + ":" + timeSplited[1] + " PM";
+    } else if (timeSplited[0] === 24) {
+      fullTime = time + " PM";
+    } else {
+      fullTime = time + " AM";
+    }
+    return fullTime;
+  };
+
   return (
     <div
       className={state || location.focus ? "pin pin-hover" : "pin"}
@@ -30,7 +46,8 @@ const Marker = ({ truck, location }) => {
           {truck ? truck.subtitle : "Sorry..refresh the page"}
         </div>
         <div className="working-hours-marker">
-          {location.location_time_start} to {location.location_time_end}
+          {convertTime(location.location_time_start)} to <span> </span>
+          {convertTime(location.location_time_end)}
         </div>
       </div>
     </div>
