@@ -15,5 +15,3 @@ const Search = () => {
 };
 
 export default Search;
-
-// AIzaSyARrbU8jmIoHZTMkjl4aLcFHLl0Ba7n72Q;
