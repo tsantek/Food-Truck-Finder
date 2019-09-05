@@ -78,3 +78,15 @@ export function updateTruckProfile(url = "", data = {}) {
     body: JSON.stringify(data)
   }).then(response => response.json());
 }
+
+export function updateClientProfile(url = "", data = {}) {
+  return fetch(url, {
+    method: "PATCH",
+    mode: "cors",
+    credentials: "same-origin",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  }).then(response => response.json());
+}

@@ -36,7 +36,7 @@ const Truck = props => {
       form
     ).then(res => {
       // dispatch(getUserInfo(res));
-      history.push("/trackview");
+      history.push("/truckview");
       localStorage.setItem("user", JSON.stringify(res));
     });
   };
@@ -119,7 +119,7 @@ const Truck = props => {
                 />
               </FormGroup>
               <Button>Update</Button>
-              <Button onClick={() => history.push("/trackview")}>Back</Button>
+              <Button onClick={() => history.push("/truckview")}>Back</Button>
             </form>
           </Col>
         </Row>

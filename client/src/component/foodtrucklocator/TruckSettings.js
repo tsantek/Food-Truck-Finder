@@ -27,6 +27,8 @@ const SearchContainer = props => {
       location_time_end: e.target.timeTo.value,
       truck_id: user.id
     });
+
+    e.target.reset();
   };
 
   const convertTime = time => {

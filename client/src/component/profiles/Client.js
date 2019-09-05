@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { withRouter } from "react-router-dom";
+import { updateClientProfile } from "../../api/api";
 
 import {
   Button,
@@ -28,7 +29,14 @@ const Client = props => {
 
   const onSubmitForm = e => {
     e.preventDefault();
-
+    updateClientProfile(
+      `http://localhost:8080//api/v1/users/${user.id}`,
+      form
+    ).then(res => {
+      // dispatch(getUserInfo(res));
+      history.push("/userview");
+      localStorage.setItem("client", JSON.stringify(res));
+    });
     console.log(form);
   };
 
