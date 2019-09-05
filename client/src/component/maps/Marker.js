@@ -6,7 +6,6 @@ const Marker = ({ truck, location }) => {
   const convertTime = time => {
     let timeSplited = time.split(":");
     let fullTime;
-
     if (timeSplited[0] > 12) {
       fullTime =
         (timeSplited[0] - 12).toString() + ":" + timeSplited[1] + " PM";

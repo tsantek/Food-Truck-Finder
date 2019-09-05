@@ -1,6 +1,6 @@
 import React from "react";
 
-import ReactStars from "react-stars";
+// import ReactStars from "react-stars";
 
 const FoodTruckCard = ({ truck, location, mouseIn, mouseOut }) => {
   const convertTime = time => {
@@ -30,14 +30,14 @@ const FoodTruckCard = ({ truck, location, mouseIn, mouseOut }) => {
             <div className="truck-title-card">
               {truck ? truck.name : "Sorry somthing went wrong..."}
             </div>
-            <ReactStars
+            {/* <ReactStars
               count={5}
               size={14}
               color2={"#ffd700"}
               value={truck ? truck.review : 0}
               className="stars"
               edit={false}
-            />
+            /> */}
           </div>
           <p className="truck-sutitle-card">
             {truck ? truck.subtitle : "Sorry somthing went wrong..."}

@@ -5,11 +5,9 @@ import MyLocation from "./MyLocation";
 import MapLoader from "./MapLoader";
 import TruckMarker from "./TruckMarker";
 import SelectMarker from "./SelectMarker";
-
 class GoogleMaps extends Component {
   render() {
     const { setPosition, stops, user, position } = this.props;
-
     let date = new Date();
     let day = date.getDate();
     let month = date.getMonth();
@@ -45,7 +43,6 @@ class GoogleMaps extends Component {
             .map(stop => (
               <TruckMarker lat={stop.lat} lng={stop.lng} key={stop.id} />
             ))}
-
           {position !== null && (
             <SelectMarker lat={position.lat} lng={position.lng} />
           )}

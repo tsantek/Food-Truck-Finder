@@ -1,6 +1,6 @@
 import React from "react";
-import FoodTruckList from "./foodtrucklist/FoodTruckList";
-import HeaderSearchComponent from "./header/HeaderSearchComponent";
+import FoodTruckList from "../foodtrucklist/FoodTruckList";
+import HeaderSearchComponent from "../header/HeaderSearchComponent";
 
 const SearchContainer = ({ locations, trucks, setLocations }) => {
   return (

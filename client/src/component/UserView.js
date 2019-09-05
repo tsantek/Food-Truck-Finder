@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { withRouter } from "react-router-dom";
-import SearchContainer from "./SearchContainer";
+import SearchContainer from "./search/SearchContainer";
 import GoogleMaps from "./maps/GoogleMaps";
 import { Row, Col } from "reactstrap";
 import Logo from "./logo/Logo";
