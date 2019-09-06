@@ -71,11 +71,11 @@ BackEnd: Java Spring Boot, PostgreSQL
 
 ### How to run the App:
 
-####Backend:
+#### Backend:
 
 - open backend folder wiht ItelliJ and run the app.
 
-####Frontend:
+#### Frontend:
 
 - cd to client
 - npm start
