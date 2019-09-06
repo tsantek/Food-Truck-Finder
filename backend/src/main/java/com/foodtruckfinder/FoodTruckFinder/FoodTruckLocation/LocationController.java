@@ -2,11 +2,13 @@ package com.foodtruckfinder.FoodTruckFinder.FoodTruckLocation;
 
 import com.foodtruckfinder.FoodTruckFinder.FoodTruck.FoodTruckRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("api/v1/location")
 public class LocationController {
 
@@ -24,9 +26,8 @@ public class LocationController {
         return (ArrayList<Location>) locationRepository.findAll();
     }
 
-    @PostMapping("/{truck_id}")
-    public Location addLocation(@PathVariable Long truck_id, @RequestBody Location location){
-            location.setTruck_id(truck_id);
+    @PostMapping("/")
+    public Location addLocation(@RequestBody Location location){
             return locationRepository.save(location);
     }
 
@@ -35,3 +36,4 @@ public class LocationController {
         locationRepository.deleteById(location_id);
     }
 }
+

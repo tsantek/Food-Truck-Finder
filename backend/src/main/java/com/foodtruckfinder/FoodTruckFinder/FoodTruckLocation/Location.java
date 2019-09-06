@@ -18,8 +18,8 @@ public class Location {
     @Column(name = "lat")
     private  String lat;
 
-    @Column(name = "lon")
-    private  String lon;
+    @Column(name = "lng")
+    private  String lng;
 
     @Column(name = "location")
     private  String location;

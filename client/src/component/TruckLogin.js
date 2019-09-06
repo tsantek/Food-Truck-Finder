@@ -114,7 +114,9 @@ const TruckLogin = props => {
                     placeholder="Password"
                   />
                 </FormGroup>
-                <Button>Login</Button>
+                <Button style={{ backgroundColor: "#FCD80E", color: "black" }}>
+                  Login
+                </Button>
               </Form>
             ) : (
               // REGISTER
@@ -175,7 +177,7 @@ const TruckLogin = props => {
                     placeholder="Link for profile image"
                   />
                 </FormGroup>
-                <Button>Register</Button>
+                <Button color="success">Register</Button>
               </form>
             )}
           </Col>

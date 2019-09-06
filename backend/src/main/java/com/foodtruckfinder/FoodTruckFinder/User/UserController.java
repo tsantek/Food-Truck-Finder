@@ -1,6 +1,5 @@
 package com.foodtruckfinder.FoodTruckFinder.User;
 
-import com.foodtruckfinder.FoodTruckFinder.FoodTruck.FoodTruck;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,8 +10,8 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-@CrossOrigin(origins = "http://localhost:3000")
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/api/v1/users")
 public class UserController {
 
@@ -50,6 +49,7 @@ public class UserController {
         user.setImg(userUpdates.getImg());
         return userRepository.save(user);
     }
+
 
     @PostMapping("/authenticate")
     public Map<String, Object> authenticate(@RequestBody User user) {

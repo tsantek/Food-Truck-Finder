@@ -13,7 +13,7 @@ public class FoodTruck {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "truck_id")
-    private long id;
+    private long  id;
 
     @Column(name = "name")
     private  String name;

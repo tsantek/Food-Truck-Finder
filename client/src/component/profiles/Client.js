@@ -94,11 +94,23 @@ const Client = props => {
                   onChange={handleInputChange}
                 />
               </FormGroup>
-              <Button>Update</Button>
-              <Button onClick={() => history.push("/userview")}>Back</Button>
+              <Button color="success">Update</Button>
+              <Button
+                style={{
+                  backgroundColor: "#FCD80E",
+                  color: "black",
+                  marginLeft: "10px"
+                }}
+                onClick={() => history.push("/userview")}
+              >
+                Back
+              </Button>
             </form>
           </Col>
         </Row>
+        <Button color="danger" style={{ float: "right" }}>
+          Delete
+        </Button>
       </Container>
     </div>
   );

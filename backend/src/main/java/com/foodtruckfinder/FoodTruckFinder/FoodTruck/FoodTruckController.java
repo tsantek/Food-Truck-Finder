@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("api/v1/foodtruck")
 public class FoodTruckController {
 
@@ -39,6 +40,7 @@ public class FoodTruckController {
 
     @PatchMapping("/{id}")
     public FoodTruck update(@PathVariable Long id, @RequestBody FoodTruck userUpdates) {
+        System.out.println(userUpdates);
         FoodTruck user = foodTruckRepository.findById(id).get();
         user.setName(userUpdates.getName());
         user.setEmail(userUpdates.getEmail());
