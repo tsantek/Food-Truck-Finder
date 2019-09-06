@@ -68,3 +68,14 @@ BackEnd: Java Spring Boot, PostgreSQL
 ## Update profile User
 
 ![Image description](img/6.png)
+
+### How to run the App:
+
+####Backend:
+
+- open backend folder wiht ItelliJ and run the app.
+
+####Frontend:
+
+- cd to client
+- npm start
